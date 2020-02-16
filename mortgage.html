@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Mortgage Calculator</title>
+      <meta name="description" content="Mortgage Calculator" />
+      <meta name="keywords" content="mortgage, calculate, online, cash, PMI" />
+      <link rel="canonical" href="http://maniam.github.io/network_tools" />
+      <meta name=viewport content="width=device-width, initial-scale=1">
+	  
+      <style type="text/css">
+         label {
+         display: inline-block;
+         width:200px;
+         text-align: left;
+         }
+         input {
+         display: inline-block;
+         width:120px;
+         text-align: left;
+         }
+         .mono {
+         font-family: monospace;
+         }
+		 input[type="radio"] {
+         margin-right: 0;
+         }
+		 u.dotted{
+          border-bottom: 1px dashed #999;
+          text-decoration: none; 
+         }
+      </style>
+	  <link rel='stylesheet' type='text/css' href='header_footer.css'>
+   </head>
+   
+   <body>
+   
+   	  <ul id='nav'> </ul>
+	  
+	  <script type="text/javascript" src="header.js"></script>
+		  
+      <table class="table" bgcolor="#ffffff" border="0">
+         <tr>
+            <td align="left" height="35">
+               <font style="COLOR: #000000; FONT-SIZE: 16px; FONT-FAMILY: Arial; padding: 5px;"><b> Mortgage Calculator</b></font>
+            </td>
+         </tr>
+		 
+         <tr>
+            <td bgcolor="#ffffff">
+               <form name="cash">
+                  <table bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0">
+                     <tr>
+                        <td align="center">
+                           <table cellpadding="5" cellspacing="0" border="0">
+						   
+                              <tr>
+                                 <td align="left">
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Sales Price:</font>
+                                 </td>
+                                 <td align="left">
+                                    <input id="price" type="text" name="price" value="475000" size="10" onkeyup='calculate()'>
+									<span id='not_valid_price' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>
+                                 <td align="left" valign="absmiddle">
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Down Payment: (%) </font>
+                                 </td>
+                                 <td align="left" valign="absmiddle">
+                                    <input id="getdown" type="text" name="getdown" value="5" size="10" onkeyup='calculate()'>
+									<span id='not_valid_getdown' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>
+                                 <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Interest Rate: (%)</font>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="rate" type="text" name="rate" value="3.625" size="10" onkeyup='calculate()'>
+									<span id='not_valid_rate' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>
+                                 <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Points: (%)</font>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="points" type="text" name="points" value="0" size="10" onkeyup='calculate()'>
+									<span id='not_valid_points' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+							  <tr>							  
+							     <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">PMI Rate: (%)</font>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="pmi" type="text" name="pmi" value="0.37" size="10" onkeyup='calculate()'>
+									<span id='not_valid_pmi' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>
+                                 <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Property State:</font>
+                                 </td>
+                                 <td align="left" >
+                                    <select id="state" name="state" onChange="calculate()">
+                                       <option value="1">AK
+                                       </option>
+                                       <option value="2">AL
+                                       </option>
+                                       <option value="3">AR
+                                       </option>
+                                       <option value="4">AZ
+                                       </option>
+                                       <option value="5" selected>CA
+                                       </option>
+                                       <option value="6">CO
+                                       </option>
+                                       <option value="7">CT
+                                       </option>
+                                       <option value="8">DC
+                                       </option>
+                                       <option value="9">DE
+                                       </option>
+                                       <option value="10">FL
+                                       </option>
+                                       <option value="11">GA
+                                       </option>
+                                       <option value="12">HI
+                                       </option>
+                                       <option value="13">IA
+                                       </option>
+                                       <option value="14">ID
+                                       </option>
+                                       <option value="15">IL
+                                       </option>
+                                       <option value="16">IN
+                                       </option>
+                                       <option value="17">KS
+                                       </option>
+                                       <option value="18">KY
+                                       </option>
+                                       <option value="19">LA
+                                       </option>
+                                       <option value="20">MA
+                                       </option>
+                                       <option value="21">MD
+                                       </option>
+                                       <option value="22">ME
+                                       </option>
+                                       <option value="23">MI
+                                       </option>
+                                       <option value="24">MN
+                                       </option>
+                                       <option value="25">MO
+                                       </option>
+                                       <option value="26">MS
+                                       </option>
+                                       <option value="27">MT
+                                       </option>
+                                       <option value="28">NC
+                                       </option>
+                                       <option value="29">ND
+                                       </option>
+                                       <option value="30">NE
+                                       </option>
+                                       <option value="31">NH
+                                       </option>
+                                       <option value="32">NJ
+                                       </option>
+                                       <option value="33">NM
+                                       </option>
+                                       <option value="34">NV
+                                       </option>
+                                       <option value="35">NY
+                                       </option>
+                                       <option value="36">OH
+                                       </option>
+                                       <option value="37">OK
+                                       </option>
+                                       <option value="38">OR
+                                       </option>
+                                       <option value="39">PA
+                                       </option>
+                                       <option value="40">RI
+                                       </option>
+                                       <option value="41">SC
+                                       </option>
+                                       <option value="42">SD
+                                       </option>
+                                       <option value="43">TN
+                                       </option>
+                                       <option value="44">TX
+                                       </option>
+                                       <option value="45">UT
+                                       </option>
+                                       <option value="46">VA
+                                       </option>
+                                       <option value="47">VT
+                                       </option>
+                                       <option value="48">WA
+                                       </option>
+                                       <option value="49">WI
+                                       </option>
+                                       <option value="50">WV
+                                       </option>
+                                       <option value="51">WY
+                                       </option>
+                                    </select>
+                                    <span title="Select the state where you property will be located. This will allow the calculator to better estimate the closing cost, property taxes and hazard insurance." class="help"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+                                 </td>
+                              </tr>	
+							  
+							  <tr>							  
+							     <td align="left" >
+                                    <u style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;" class="dotted" title="Base closing cost often includes originating fee, appraisal fee, credit report fee, home inspection fee, attorney fee, etc."> Base Closing Cost: </u>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="base_closing" type="text" name="base_closing" value="4000" size="10" onkeyup='calculate()'>
+									<span id='not_valid_closing' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>							  
+							     <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">Term (month):</font>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="term" type="text" name="term" value="360" size="10" onkeyup='calculate()'>
+									<span id='not_valid_term' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+							  <tr>							  
+							     <td align="left" >
+                                    <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">HOA:</font>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="hoa" type="text" name="hoa" value="584" size="10" onkeyup='calculate()'>
+									<span id='not_valid_hoa' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+							  <tr>							  
+							     <td align="left" >
+                                    <u style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;" class="dotted" title="Your extra monthly costs such as car loan, electricity bill, etc.">Extra Monthly Costs:</u>
+                                 </td>
+                                 <td align="left" >
+                                    <input id="extra_monthly_costs" type="text" name="extra_monthly_costs" value="1167" size="10" onkeyup='calculate()'>
+									<span id='not_valid_extra_monthly_costs' style="background-color: yellow;"></span>
+                                 </td>
+                              </tr>
+							  
+                              <tr>
+                                 <td colspan="2" align="left" valign="center">
+
+                                 </td>
+                              </tr>
+							  
+                           </table>
+                        </td>
+                     </tr>
+                  </table>
+               </form>
+			   
+               <table bgcolor="#EEEEEE" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                     <td align="center">
+                        <table cellpadding="5" cellspacing="0" border="0">
+						   
+                           <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Loan Amount:</font>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output1" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Loan to Value (LTV) Ratio:</font>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output2" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                               <td colspan="2" height="15"></td>
+                           </tr>
+						   
+                           <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Down Payment:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output3" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <u style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;" class="dotted" title="Points Paid = 'loan amount' * 'points'. This is the amount of money that you are paying for points in order to get a lower interest rate from your lender.">Points Paid:</u>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output3a" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+                           <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Closing Cost:</font>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output4" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>					   
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <u id="insurance_comm" style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;" class="dotted" title="">Homeowner Insurance:</u>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output4a" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <u id="tax_comm" style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;" class="dotted" title="">Proprty Tax:</u>
+                              </td>
+                              <td align="left" >
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output4b" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>					 
+						   
+                           <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Taxes &amp; Insurance:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output4c" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">PrePaids:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output5" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+                           <tr>
+                              <td align="left" valign="top">
+                                 <u style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;" class="dotted" title="Total Cash Needed = 'Down Payment' + 'Closing Cost' + 'PrePaid'">Total Cash Needed:</u>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output6" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+						   
+						   <tr>
+                               <td colspan="2" height="15"></td>
+                           </tr>
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">APR:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output7" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">PMI:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output7a" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>							   
+
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">Mortgage Payment (Principal &amp; Interests):</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output8" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>		
+
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">+ Taxes &amp; Insurance:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output9" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>	
+						   
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">+ PMI:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output10" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>
+
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">+ HOA:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output11" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>			
+
+						   <tr>
+                              <td align="left" valign="top">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial; FONT-WEIGHT: bold;">+ Extra Monthly Costs:</font>
+                              </td>
+                              <td align="left">
+                                 <font style="COLOR: #000000; FONT-SIZE: 13px; FONT-FAMILY: Arial;">
+                                    <div id="Output12" class="mono"> </div>
+                                 </font>
+                              </td>
+                           </tr>						   
+						   
+                        </table>						
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>	 
+		 
+		 <tr>
+             <td colspan="2" height="15"></td>
+         </tr>		 
+		 
+      </table>
+	  
+      <script type="text/javascript" src="mortgage.js"></script>
+	  
+   </body>
+</html>
