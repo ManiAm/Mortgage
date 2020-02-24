@@ -449,7 +449,6 @@ function calculate() {
 	document.getElementById("Output4c").innerHTML = tax_insurance + "/month" + " = " + tax_insurance_yearly + "/year"		
     document.getElementById("Output5").innerHTML = prePaids;
     document.getElementById("Output6").innerHTML = totalCash + " (" + totalCashPercent + "% of price)";	
-	document.getElementById("Output7a").innerHTML = monthly_pmi + "/month";	
 	document.getElementById("Output8").innerHTML = monthly_pay + "/month";
 	document.getElementById("Output9").innerHTML  = "+" + tax_insurance + " = " + monthly_pay_tax_insurance + "/month";
 	document.getElementById("Output10").innerHTML = "+" + monthly_pmi + " = " + monthly_pay_tax_insurance_pmi + "/month";
